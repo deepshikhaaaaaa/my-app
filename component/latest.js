@@ -39,7 +39,7 @@ const [datafor,setdatafor]=useState({});
             </div>
             {(loadinglatest) ? "loading" : "done"}
             {
-                (!loadinglatest) ? <div className="grid grid-cols-5">
+                (!loadinglatest) ? <div className="grid grid-cols-3">
                     {
                         datalatest.results.map((e, i) => {
                             return (
