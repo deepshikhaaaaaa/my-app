@@ -1,13 +1,15 @@
 'use client';
 import Cards from "./cards";
 import { useEffect, useState } from "react";
+import Details from "./details";
 
 export default function Upcoming() {
 
     const [dataupcoming, setupcoming] = useState({});
     const [loadingup, setloadingup] = useState(true);
     const [pageup, setPageup] = useState(1);
-
+    const[detail,setdetail]=useState(false);
+    const [datafor,setdatafor]=useState({});
 
     
     
@@ -31,7 +33,7 @@ export default function Upcoming() {
 
 
     return (
-        <div className="flex flex-col justify-center items-center">
+        (!detail)? <div className="flex flex-col justify-center items-center">
             <div className="flex ">
                 <p onClick={() => { (pageup > 1) ? setPageup(pageup - 1) : "" }}>prev</p>
                 <p>{pageup}</p>
@@ -44,7 +46,8 @@ export default function Upcoming() {
                     {
                         dataupcoming.results.map((e, i) => {
                             return (
-                                <Cards data={e} id={i}></Cards>
+                                <div onClick={()=>{setdetail(true)
+                                    setdatafor(e)}} ><Cards data={e} id={i}></Cards></div>
                             )
                         })
                     }
@@ -57,6 +60,6 @@ export default function Upcoming() {
                 <p onClick={() => { setPageup(pageup + 1) }}>next</p>
 
             </div>
-        </div>
+        </div>:<Details data={datafor}></Details>
     )
 } 

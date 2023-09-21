@@ -1,11 +1,14 @@
 'use client';
 import Cards from "./cards";
 import { useEffect, useState } from "react";
+import Details from "./details";
+
 export default function Popular() {
     const [datapopular, setpopular] = useState({});
     const [loadingpopular, setloadingpopular] = useState(true);
     const [pagepop, setPagepop] = useState(1);
-
+    const[detail,setdetail]=useState(false);
+    const [datafor,setdatafor]=useState({});
 
     useEffect(()=>{
 
@@ -25,7 +28,7 @@ export default function Popular() {
 
 
     return (
-        <div className="flex flex-col justify-center items-center ">
+        (!detail)?  <div className="flex flex-col justify-center items-center ">
             <div className="flex ">
                 <p onClick={() => { (pagepop > 1) ? setPagepop(pagepop - 1) : "" }}>prev</p>
                 <p>{pagepop}</p>
@@ -38,7 +41,8 @@ export default function Popular() {
                     {
                         datapopular.results.map((e, i) => {
                             return (
-                                <Cards data={e} id={i}></Cards>
+                                <div onClick={()=>{setdetail(true)
+                                    setdatafor(e)}} ><Cards data={e} id={i}></Cards></div>
                             )
                         })
                     }
@@ -51,6 +55,6 @@ export default function Popular() {
                 <p onClick={() => { setPagepop(pagepop + 1) }}>next</p>
 
             </div>
-        </div>
+        </div>:<Details data={datafor}></Details>
     )
 }

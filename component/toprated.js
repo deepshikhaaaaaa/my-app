@@ -1,4 +1,5 @@
 'use client'
+import Details from "./details";
 
 import { useState, useEffect } from "react";
 import Cards from "./cards";
@@ -6,28 +7,25 @@ export default function Toprated() {
     const [datatop, setdatatop] = useState({});
     const [loading, setloading] = useState(true);
     const [pagetop, setPagetop] = useState(1);
+    const[detail,setdetail]=useState(false);
+    const [datafor,setdatafor]=useState({});
 
+    useEffect(() => {
+        const urltop = `https://api.themoviedb.org/3/movie/top_rated?api_key=28a21a6f4ab97b7e9063c5a90f30d383&page=${pagetop}`
+        fetch(urltop)
+            .then((res) => res.json())
+            .then((data) => {
+                setdatatop(data)
+                setloading(false)
+            })
 
-    useEffect(()=>{
-
-    const urltop = `https://api.themoviedb.org/3/movie/top_rated?api_key=28a21a6f4ab97b7e9063c5a90f30d383&page=${pagetop}`
-
-
-    // setloading(true)
-    fetch(urltop)
-        .then((res) => res.json())
-        .then((data) => {
-            setdatatop(data)
-            setloading(false)
-        })
-
-    },[pagetop])
+    }, [pagetop])
 
 
 
 
     return (
-        <div className="flex flex-col justify-center items-center">
+        (!detail)?  <div className="flex flex-col justify-center items-center">
             <div className="flex ">
                 <p onClick={() => { (pagetop > 1) ? setPagetop(pagetop - 1) : "" }}>prev</p>
                 <p>{pagetop}</p>
@@ -40,7 +38,8 @@ export default function Toprated() {
                     {
                         datatop.results.map((e, i) => {
                             return (
-                                <Cards data={e} id={i}></Cards>
+                                <div onClick={()=>{setdetail(true)
+                                    setdatafor(e)}} ><Cards data={e} id={i}></Cards></div>
                             )
                         })
                     }
@@ -53,6 +52,6 @@ export default function Toprated() {
                 <p onClick={() => { setPagetop(pagetop + 1) }}>next</p>
 
             </div>
-        </div>
+        </div>:<Details data={datafor}></Details>
     )
 }

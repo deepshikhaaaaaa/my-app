@@ -6,6 +6,7 @@ import Toprated from "./toprated";
 import Upcoming from "./upcoming";
 import Latest from "./latest";
 import Popular from "./popular";
+import Details from "./details";
 
 export default function First() {
 
@@ -32,7 +33,8 @@ export default function First() {
                 setloading(false)
             })
     }
-
+    const[detail,setdetail]=useState(false);
+const [datafor,setdatafor]=useState({});
 
 
     const searchvalue = (
@@ -41,7 +43,8 @@ export default function First() {
             {
                 searchval.results.map((e, i) => {
                     return (
-                        <Cards data={e} id={i}></Cards>
+                        <div onClick={()=>{setdetail(true)
+                        setdatafor(e)}} ><Cards data={e} id={i}></Cards></div>
                     )
                 })
             }
@@ -51,7 +54,7 @@ export default function First() {
 
 
     return (
-        <div className="w-full bg-white">
+       <div className="w-full bg-white font-mono text-[20px] space-x-[-3px]">
             <input type="text" className="searchbox" onChange={(e) => searching(e)} />
             <div className="flex gap-x-[40px]  font-mono text-[20px] space-x-[-3px]">
                 <button onClick={() => {
@@ -60,6 +63,8 @@ export default function First() {
                     setpop(false);
                     settop(false);
                     setloading(true);
+                    setdetail(false)
+
                 }}>Upcoming</button>
                 <button onClick={() => {
                     settop(true);
@@ -67,6 +72,8 @@ export default function First() {
                     setpop(false);
                     setup(false);
                     setloading(true);
+                    setdetail(false)
+
                 }
                 }>Top-rated</button>
                 <button onClick={() => {
@@ -75,6 +82,8 @@ export default function First() {
                     setpop(true);
                     settop(false);
                     setloading(true);
+                    setdetail(false)
+
                 }}>Popular</button>
                 <button onClick={() => {
                     setup(false);
@@ -82,9 +91,10 @@ export default function First() {
                     setpop(false);
                     settop(false);
                     setloading(true);
+                    setdetail(false)
                 }}>Latest</button>
             </div>
-            <div className=" font-mono text-[20px] space-x-[-3px] mt-[20px]">
+           { (!detail)?<div className=" font-mono text-[20px] space-x-[-3px] mt-[20px]">
 
                 {/* {(loading) ? "loading" : "done"} */}
 
@@ -94,8 +104,8 @@ export default function First() {
                 {(up && loading) ? <Upcoming></Upcoming> : ""}
                 {(lat && loading) ? <Latest></Latest> : ""}
                 {(pop && loading) ? <Popular></Popular> : ""}
-            </div>
-
+            </div>:<Details data={datafor}></Details>
+}
 
         </div>
     )
