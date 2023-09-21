@@ -10,18 +10,18 @@ export default function Latest() {
 
 
 
-    useEffect(()=>{
+    useEffect(() => {
 
-    // setloading(true)
-    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=28a21a6f4ab97b7e9063c5a90f30d383&page=${page}`
-    fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-            setlatest(data)
-            setloadinglatest(false)
-        })
+        // setloading(true)
+        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=28a21a6f4ab97b7e9063c5a90f30d383&page=${page}`
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                setlatest(data)
+                setloadinglatest(false)
+            })
 
-    },[page])
+    }, [page])
 
 
 
