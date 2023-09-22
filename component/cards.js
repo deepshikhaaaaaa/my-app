@@ -8,8 +8,8 @@ export default function Cards(props) {
     }
     // 
     return (
-        <div className="h-[450px] w-[350px]   m-4">
-            <div className="w-[350px]  ">
+        <div className="h-[450px] sm:w-[350px] w-[200px]  m-4">
+            <div className="sm:w-[350px]  ">
                 {
                     (props.data && imgurl)?(<Image src={imgurl} height={300} width={300} className="h-[350px] w-[300px] object-cover"></Image>):""
                 }

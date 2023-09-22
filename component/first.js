@@ -56,7 +56,7 @@ const [datafor,setdatafor]=useState({});
     return (
        <div className="w-full bg-white font-mono text-[20px] space-x-[-3px]">
             <input type="text" className="searchbox" onChange={(e) => searching(e)} />
-            <div className="flex gap-x-[40px]  font-mono text-[20px] space-x-[-3px]">
+            <div className="flex sm:gap-x-[40px]  font-mono sm:text-[20px] text-[15px] space-x-[5px] sm:space-x-[-3px]">
                 <button onClick={() => {
                     setup(true);
                     setlat(false);
@@ -65,7 +65,7 @@ const [datafor,setdatafor]=useState({});
                     setloading(true);
                     setdetail(false)
 
-                }}>Upcoming</button>
+                }} className="butt">Upcoming</button>
                 <button onClick={() => {
                     settop(true);
                     setlat(false);
@@ -75,7 +75,7 @@ const [datafor,setdatafor]=useState({});
                     setdetail(false)
 
                 }
-                }>Top-rated</button>
+                } className="butt">Top-rated</button>
                 <button onClick={() => {
                     setup(false);
                     setlat(false);
@@ -84,7 +84,7 @@ const [datafor,setdatafor]=useState({});
                     setloading(true);
                     setdetail(false)
 
-                }}>Popular</button>
+                }} className="butt">Popular</button>
                 <button onClick={() => {
                     setup(false);
                     setlat(true);
@@ -92,9 +92,9 @@ const [datafor,setdatafor]=useState({});
                     settop(false);
                     setloading(true);
                     setdetail(false)
-                }}>Latest</button>
+                }} className="butt">Latest</button>
             </div>
-           { (!detail)?<div className=" font-mono text-[20px] space-x-[-3px] mt-[20px]">
+           { (!detail)?<div className=" font-mono sm:text-[20px] text-[15px] space-x-[-3px] mt-[20px]">
 
                 {/* {(loading) ? "loading" : "done"} */}
 
@@ -104,7 +104,7 @@ const [datafor,setdatafor]=useState({});
                 {(up && loading) ? <Upcoming></Upcoming> : ""}
                 {(lat && loading) ? <Latest></Latest> : ""}
                 {(pop && loading) ? <Popular></Popular> : ""}
-            </div>:<Details data={datafor}></Details>
+            </div>:<Details data={datafor} detailschange={setdetail}></Details>
 }
 
         </div>

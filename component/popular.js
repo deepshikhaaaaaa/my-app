@@ -29,11 +29,11 @@ export default function Popular() {
 
     return (
         (!detail)?  <div className="flex flex-col justify-center items-center ">
-            <div className="flex ">
-                <p onClick={() => { (pagepop > 1) ? setPagepop(pagepop - 1) : "" }}>prev</p>
-                <p>{pagepop}</p>
+           <div className="flex ">
+                <button className="butt" onClick={() => { (pagepop > 1) ? setPagepop(pagepop - 1) : "" }}>prev</button>
+                <button className="ml-[20px] mr-[20px]">{pagepop}</button>
 
-                <p onClick={() => { setPagepop(pagepop + 1) }}>next</p>
+                <button className="butt" onClick={() => { setPagepop(pagepop + 1) }}>next</button>
 
             </div>
             {
@@ -48,13 +48,13 @@ export default function Popular() {
                     }
                 </div> : ""
             }
-            <div className="flex ">
-                <p onClick={() => { (pagepop > 1) ? setPagepop(pagepop - 1) : "" }}>prev</p>
-                <p>{pagepop}</p>
+           <div className="flex ">
+                <button className="butt" onClick={() => { (pagepop > 1) ? setPagepop(pagepop - 1) : "" }}>prev</button>
+                <button className="ml-[20px] mr-[20px]">{pagepop}</button>
 
-                <p onClick={() => { setPagepop(pagepop + 1) }}>next</p>
+                <button className="butt" onClick={() => { setPagepop(pagepop + 1) }}>next</button>
 
             </div>
-        </div>:<Details data={datafor}></Details>
+        </div>:<Details data={datafor}  detailschange={setdetail}></Details>
     )
 }

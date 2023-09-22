@@ -27,10 +27,10 @@ export default function Toprated() {
     return (
         (!detail)?  <div className="flex flex-col justify-center items-center">
             <div className="flex ">
-                <p onClick={() => { (pagetop > 1) ? setPagetop(pagetop - 1) : "" }}>prev</p>
-                <p>{pagetop}</p>
+                <button className="butt" onClick={() => { (pagetop > 1) ? setPagetop(pagetop - 1) : "" }}>prev</button>
+                <button className="ml-[20px] mr-[20px]">{pagetop}</button>
 
-                <p onClick={() => { setPagetop(pagetop + 1) }}>next</p>
+                <button className="butt" onClick={() => { setPagetop(pagetop + 1) }}>next</button>
 
             </div>
             {
@@ -45,13 +45,13 @@ export default function Toprated() {
                     }
                 </div> : ""
             }
-            <div className="flex ">
-                <p onClick={() => { (pagetop > 1) ? setPagetop(pagetop - 1) : "" }}>prev</p>
-                <p>{pagetop}</p>
+           <div className="flex ">
+                <button className="butt" onClick={() => { (pagetop > 1) ? setPagetop(pagetop - 1) : "" }}>prev</button>
+                <button className="ml-[20px] mr-[20px]">{pagetop}</button>
 
-                <p onClick={() => { setPagetop(pagetop + 1) }}>next</p>
+                <button className="butt" onClick={() => { setPagetop(pagetop + 1) }}>next</button>
 
             </div>
-        </div>:<Details data={datafor}></Details>
+        </div>:<Details data={datafor}  detailschange={setdetail}></Details>
     )
 }

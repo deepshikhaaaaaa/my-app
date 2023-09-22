@@ -6,8 +6,8 @@ export default function Latest() {
     const [datalatest, setlatest] = useState({});
     const [loadinglatest, setloadinglatest] = useState(true);
     const [page, setPage] = useState(1);
-    const[detail,setdetail]=useState(false);
-const [datafor,setdatafor]=useState({});
+    const [detail, setdetail] = useState(false);
+    const [datafor, setdatafor] = useState({});
 
 
 
@@ -29,12 +29,12 @@ const [datafor,setdatafor]=useState({});
 
 
     return (
-       (!detail)? <div className="flex flex-col justify-center items-center ">
+        (!detail) ? <div className="flex flex-col justify-center items-center ">
             <div className="flex ">
-                <p onClick={() => { (page > 1) ? setPage(page - 1) : "" }}>prev</p>
-                <p>{page}</p>
+                <button className="butt" onClick={() => { (page > 1) ? setPage(page - 1) : "" }}>prev</button>
+                <button className="ml-[20px] mr-[20px]">{page}</button>
 
-                <p onClick={() => { setPage(page + 1) }}>next</p>
+                <button className="butt" onClick={() => { setPage(page + 1) }}>next</button>
 
             </div>
             {(loadinglatest) ? "loading" : "done"}
@@ -43,20 +43,22 @@ const [datafor,setdatafor]=useState({});
                     {
                         datalatest.results.map((e, i) => {
                             return (
-                                <div onClick={()=>{setdetail(true)
-                                    setdatafor(e)}} ><Cards data={e} id={i}></Cards></div>
+                                <div onClick={() => {
+                                    setdetail(true)
+                                    setdatafor(e)
+                                }} ><Cards data={e} id={i}></Cards></div>
                             )
                         })
                     }
                 </div> : ""
             }
-            <div className="flex">
-                <p onClick={() => { setPage(page - 1) }}>prev</p>
-                <p>{page}</p>
+           <div className="flex ">
+                <button className="butt" onClick={() => { (page > 1) ? setPage(page - 1) : "" }}>prev</button>
+                <button className="ml-[20px] mr-[20px]">{page}</button>
 
-                <p onClick={() => { setPage(page + 1) }}>next</p>
+                <button className="butt" onClick={() => { setPage(page + 1) }}>next</button>
 
             </div>
-        </div>:<Details data={datafor}></Details>
+        </div> : <Details data={datafor} detailschange={setdetail}></Details>
     )
 }
