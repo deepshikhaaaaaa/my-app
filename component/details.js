@@ -6,22 +6,16 @@ export default function Details(props) {
     var imgurl = 'https://bitsofco.de/img/Qo5mfYDE5v-350.png', bg;
     if (props.data && (props.data.poster_path != undefined || props.data.poster_path != null)) {
         imgurl = "https://image.tmdb.org/t/p/w500" + `${props.data.poster_path}`
-        // bg = "bg-[url('" + `${imgurl}` + "')] h-[500px] w-[300px] bg-cover";
-        // console.log(bg);
+      
     }
     var revimg = 'https://bitsofco.de/img/Qo5mfYDE5v-350.png';
-    // if (props.data && (props.data.author_details.avatar_path != undefined || props.data.author_details.avatar_path != null)) {
-    //     revimg = "https://image.tmdb.org/t/p/w500" + `${props.data.author_details.avatar_path}`
-    //     // bg = "bg-[url('" + `${imgurl}` + "')] h-[500px] w-[300px] bg-cover";
-    //     // console.log(bg);
-    // }
+  
     const [revdata, setrevdata] = useState({});
     const [loading, setloading] = useState(true)
 
 
     useEffect(() => {
 
-        // setloading(true)
         var revurl = `https://api.themoviedb.org/3/movie/${props.data.id}/reviews?api_key=28a21a6f4ab97b7e9063c5a90f30d383`
         fetch(revurl)
             .then((res) => res.json())
@@ -34,8 +28,6 @@ export default function Details(props) {
 
     }, [props.data.id])
 
-    // var revurl=`https://api.themoviedb.org/3/movie/${props.data.id}/reviews?api_key=28a21a6f4ab97b7e9063c5a90f30d383`
-    // (!loading)?console.log(revdata):"";
     console.log(revdata)
     return (
         <div className="flex flex-col justify-center items-center">
@@ -74,12 +66,12 @@ export default function Details(props) {
             {/* review section */}
             <div>
                 <p>Reviews</p>
-                {(!loading) ? <div>{revdata.results.map((e) => {
+                {(!loading) ? <div>{revdata.results.map((e ,i) => {
                     if (e && (e.author_details.avatar_path != undefined || e.author_details.avatar_path != null)) {
                         revimg = "https://image.tmdb.org/t/p/w500" + `${e.author_details.avatar_path}`
                         
                     }
-                    return (<div className="mb-8 w-[750px] h-[300px]  overflow-auto  border-gray-400 shadow-md border border-solid ">
+                    return (i<5)? (<div className="mb-8 w-[750px] h-[300px]  overflow-auto  border-gray-400 shadow-md border border-solid ">
                         {
                             (props.data && revimg) ? (<Image src={revimg} height={100} width={100} className="h-[100px] w-[100px] object-cover"></Image>) : ""
                         }
@@ -94,7 +86,7 @@ export default function Details(props) {
                                 {e.content}
                             </p>
                         </div>
-                    </div>)
+                    </div>):""
                 })}</div> : ""}
             </div>
         </div>
