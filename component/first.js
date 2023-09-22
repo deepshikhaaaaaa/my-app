@@ -55,7 +55,7 @@ const [datafor,setdatafor]=useState({});
 
     return (
        <div className="w-full bg-white font-mono text-[20px] space-x-[-3px]">
-            <input type="text" className="searchbox" onChange={(e) => searching(e)} />
+            <input type="text" className="searchbox ml-[10px]" onChange={(e) => searching(e)} />
             <div className="flex sm:gap-x-[40px]  font-mono sm:text-[20px] text-[15px] space-x-[5px] sm:space-x-[-3px]">
                 <button onClick={() => {
                     setup(true);
@@ -65,7 +65,7 @@ const [datafor,setdatafor]=useState({});
                     setloading(true);
                     setdetail(false)
 
-                }} className="butt">Upcoming</button>
+                }} className="butt w-[110px] ml-[10px]">Upcoming</button>
                 <button onClick={() => {
                     settop(true);
                     setlat(false);
@@ -75,7 +75,7 @@ const [datafor,setdatafor]=useState({});
                     setdetail(false)
 
                 }
-                } className="butt">Top-rated</button>
+                } className="butt  w-[120px]">Top-rated</button>
                 <button onClick={() => {
                     setup(false);
                     setlat(false);
@@ -84,7 +84,7 @@ const [datafor,setdatafor]=useState({});
                     setloading(true);
                     setdetail(false)
 
-                }} className="butt">Popular</button>
+                }} className="butt  w-[100px]" >Popular</button>
                 <button onClick={() => {
                     setup(false);
                     setlat(true);
@@ -92,7 +92,7 @@ const [datafor,setdatafor]=useState({});
                     settop(false);
                     setloading(true);
                     setdetail(false)
-                }} className="butt">Latest</button>
+                }} className="butt  w-[90px]">Latest</button>
             </div>
            { (!detail)?<div className=" font-mono sm:text-[20px] text-[15px] space-x-[-3px] mt-[20px]">
 

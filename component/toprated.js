@@ -27,10 +27,10 @@ export default function Toprated() {
     return (
         (!detail)?  <div className="flex flex-col justify-center items-center">
             <div className="flex ">
-                <button className="butt" onClick={() => { (pagetop > 1) ? setPagetop(pagetop - 1) : "" }}>prev</button>
+                <button className="butt w-[65px]" onClick={() => { (pagetop > 1) ? setPagetop(pagetop - 1) : "" }}>prev</button>
                 <button className="ml-[20px] mr-[20px]">{pagetop}</button>
 
-                <button className="butt" onClick={() => { setPagetop(pagetop + 1) }}>next</button>
+                <button className="butt w-[65px]" onClick={() => { setPagetop(pagetop + 1) }}>next</button>
 
             </div>
             {
@@ -46,10 +46,10 @@ export default function Toprated() {
                 </div> : ""
             }
            <div className="flex ">
-                <button className="butt" onClick={() => { (pagetop > 1) ? setPagetop(pagetop - 1) : "" }}>prev</button>
+                <button className="butt w-[65px]" onClick={() => { (pagetop > 1) ? setPagetop(pagetop - 1) : "" }}>prev</button>
                 <button className="ml-[20px] mr-[20px]">{pagetop}</button>
 
-                <button className="butt" onClick={() => { setPagetop(pagetop + 1) }}>next</button>
+                <button className="butt w-[65px]" onClick={() => { setPagetop(pagetop + 1) }}>next</button>
 
             </div>
         </div>:<Details data={datafor}  detailschange={setdetail}></Details>

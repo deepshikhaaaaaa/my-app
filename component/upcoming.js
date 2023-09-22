@@ -35,10 +35,10 @@ export default function Upcoming() {
     return (
         (!detail)? <div className="flex flex-col justify-center items-center">
             <div className="flex ">
-                <button className="butt" onClick={() => { (pageup > 1) ? setPageup(pageup - 1) : "" }}>prev</button>
+                <button className="butt w-[65px]" onClick={() => { (pageup > 1) ? setPageup(pageup - 1) : "" }}>prev</button>
                 <button  className="ml-[20px]  mr-[20px]">{pageup}</button>
 
-                <button className="butt" onClick={() => { setPageup(pageup + 1) }}>next</button>
+                <button className="butt w-[65px]" onClick={() => { setPageup(pageup + 1) }}>next</button>
 
             </div>
             {
@@ -53,11 +53,11 @@ export default function Upcoming() {
                     }
                 </div> : ""
             }
-            <div className="flex ">
-                <button className="butt" onClick={() => { (pageup > 1) ? setPageup(pageup - 1) : "" }}>prev</button>
+            <div className="flex "> 
+                <button className="butt w-[65px]" onClick={() => { (pageup > 1) ? setPageup(pageup - 1) : "" }}>prev</button>
                 <button  className="ml-[20px]  mr-[20px]">{pageup}</button>
 
-                <button className="butt" onClick={() => { setPageup(pageup + 1) }}>next</button>
+                <button className="butt w-[65px]" onClick={() => { setPageup(pageup + 1) }}>next</button>
 
             </div>
         </div>:<Details data={datafor}  detailschange={setdetail}></Details>

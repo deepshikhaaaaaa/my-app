@@ -31,13 +31,13 @@ export default function Latest() {
     return (
         (!detail) ? <div className="flex flex-col justify-center items-center ">
             <div className="flex ">
-                <button className="butt" onClick={() => { (page > 1) ? setPage(page - 1) : "" }}>prev</button>
+                <button className="butt  w-[65px]" onClick={() => { (page > 1) ? setPage(page - 1) : "" }}>prev</button>
                 <button className="ml-[20px] mr-[20px]">{page}</button>
 
-                <button className="butt" onClick={() => { setPage(page + 1) }}>next</button>
+                <button className="butt w-[65px]" onClick={() => { setPage(page + 1) }}>next</button>
 
             </div>
-            {(loadinglatest) ? "loading" : "done"}
+            {/* {(loadinglatest) ? "loading" : "done"} */}
             {
                 (!loadinglatest) ? <div className="grid grid-cols-3">
                     {
@@ -53,10 +53,10 @@ export default function Latest() {
                 </div> : ""
             }
            <div className="flex ">
-                <button className="butt" onClick={() => { (page > 1) ? setPage(page - 1) : "" }}>prev</button>
+                <button className="butt  w-[65px]" onClick={() => { (page > 1) ? setPage(page - 1) : "" }}>prev</button>
                 <button className="ml-[20px] mr-[20px]">{page}</button>
 
-                <button className="butt" onClick={() => { setPage(page + 1) }}>next</button>
+                <button className="butt w-[65px]" onClick={() => { setPage(page + 1) }}>next</button>
 
             </div>
         </div> : <Details data={datafor} detailschange={setdetail}></Details>
