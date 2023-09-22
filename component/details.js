@@ -68,7 +68,7 @@ export default function Details(props) {
             {/* review section */}
             <div>
                 <p>Reviews</p>
-                {(!loading) ? <div>{revdata.results.map((e ,i) => {
+                {(!loading && revdata.results!=undefined) ? <div>{revdata.results.map((e ,i) => {
                     if (e && (e.author_details.avatar_path != undefined || e.author_details.avatar_path != null)) {
                         revimg = "https://image.tmdb.org/t/p/w500" + `${e.author_details.avatar_path}`
                         
@@ -89,7 +89,7 @@ export default function Details(props) {
                             </p>
                         </div>
                     </div>):""
-                })}</div> : ""}
+                })}</div> : "No Reviews till now"}
             </div>
         </div>
     )
